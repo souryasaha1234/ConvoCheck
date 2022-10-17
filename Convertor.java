@@ -39,7 +39,7 @@ class DecimalBinaryConvertor extends AdapterClass{
         /*This method converts a decimal number to it's equivalent binary
          * This is done by implementing a Stack , which class is already defined in Stack.java file
          */
-        Stack s = new Stack();  //Creating an object instance of Stack class
+        StackOperations s = new StackOperations();  //Creating an object instance of Stack class
         if(num == 1 || num == 0){
             //Checks if the number is 1 or 0
             System.out.println("The equivalent binary number of the entered decimal number is : "+num);
