@@ -9,7 +9,7 @@ interface ConvertorInterf{
     void infixToPostfix(String expression);
     void postfixToInfix(String expression);
     int postfixEvaluation(String expression);
-    void prefixEvaluation(String expression);
+    int prefixEvaluation(String expression);
 }
 
 //Adapter class implementing the interface methods
@@ -23,7 +23,9 @@ abstract class AdapterClass implements ConvertorInterf{
     public int postfixEvaluation(String expression){
         return 0;
     }
-    public void prefixEvaluation(String expression){}
+    public int prefixEvaluation(String expression){
+        return 0;
+    }
 }
 
 //The Decimal to binary and Binary to Decimal Code Convertor Class

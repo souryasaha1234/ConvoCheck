@@ -44,6 +44,20 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         }
     }
 
+    //To reverse the expression
+    private String strReverse(String expression){
+        /*This is a private method which reverses the passed String and returns a new reversed String */
+        int i;
+        String newExpression = "";//Taking a newExpression String variable to store the reversed String.
+        char ch;
+        //Traversing through the String expression from lenght-1 to 0
+        for(i = expression.length()-1; i>=0; i--){
+            ch = expression.charAt(i);
+            newExpression += ch;//Appending the characters into the newExpression
+        }
+        return newExpression;//Returning the Reverse String
+    }
+
     //To check the precedence of the operator
     private int precedence(char operator){
         /*This is a private method which returns the precedence of the operators in the given
@@ -67,6 +81,9 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
     }
     //Infix to Postfix Convertor Method
     public void infixToPostfix(String expression){
+        /*This is a public method which is implemented here.
+         * This method is used to convert a given infix expression to it's equivalent postfix.
+         */
         int i = 0;
         char next = '\0';
         /*This for loop which iterates through the whole expression */
@@ -112,6 +129,54 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         System.out.println(outputArray);//Printing of Result
     }
     
+
+    //Infix to Prefix Convertor Method
+    public void infixToPrefix(String expression){
+        /*This is a public method which is implemented here.
+         * This method is used to convert a given infix expression to it's equivalent prefix
+         */
+        //First reverse the expression and store the new reversed expression in a String variable newExpression
+        String newExpression = strReverse(expression);
+        int i;
+        //Iterate through the whole reversed expression
+        for(i = 0; i<newExpression.length(); i++){
+            char symbol = newExpression.charAt(i);
+            //If the symbol of the expression is an operator
+            if(isOperator(symbol) == 1){
+                //while Loop To pop all the operators of higher precedence if there is any.
+                while(ops.top != -1 && precedence(symbol) < precedence(ops.operatorStack[ops.top])){
+                    outputArray += ops.popOperatorStack();
+                }
+                //After the execution of this while push the Symbol into the operator Stack
+                ops.pushOperatorStack(symbol);
+            }
+            //If the Symbol of the expression is close parenthesis ")" then push it into the Stack
+            else if(symbol == ')'){
+                ops.pushOperatorStack(symbol);
+            }
+            //If the symbol is an open parenthesis "(" then
+            else if(symbol == '('){
+                char next;
+                /*Pop the operator Stack until close parenthesis is being encountered
+                 * and append the popped out operator to the output array.
+                 */
+                while((next = ops.popOperatorStack()) != ')'){
+                    outputArray += next;
+                }
+            }
+            else{
+                //Else if it is a operand just append it into the output array
+                outputArray += symbol;
+            }
+        }
+        //Popping the remaining the remaining elements from the Stack
+        while(ops.top != -1){
+            outputArray += ops.popOperatorStack();
+        }
+        //Printing the result
+        System.out.println("The equivalent prefix expression of the given infix expression is : ");
+        System.out.println(strReverse(outputArray));
+    }
 }
 //ToInfix Convertor class
 class ToInfix extends AdapterClass{
@@ -158,6 +223,36 @@ class ToInfix extends AdapterClass{
             }
         }
         //Displaying the result
+        System.out.println("The Infix equivalent of the given postfix expression is : ");
+        System.out.println(infix.peek());
+    }
+
+    //Public method of prefixToInfix of void return type
+    public void prefixToInfix(String expression){
+        //Creating an object reference to the Stack of String
+        Stack<String> infix = new Stack<String>();
+        //For loop that iterates through the whole expression in reverse order
+        for(int i = expression.length()-1; i>=0; i--){
+            char symbol = expression.charAt(i);
+            //If the symbol is an operand then push into the Stack
+            if(isOperand(symbol)){
+                infix.push(symbol+"");//Pushing the symbol into the Stack
+            }
+            //If the symbol is not an operand then it should be an operator
+            else{
+                /*If the symbol is an operator then Store the peek element of the Stack in a String Variable
+                 * and then pop that peek element from the Stack
+                 * Repeat this for one more time with another variable
+                 */
+                String operand1 = infix.peek();//Storing the peek item of the Stack in variable operand1
+                infix.pop();//Popping the peek element from the Stack
+                String operand2 = infix.peek();//Storing the peek item of the Stack in variable operand1
+                infix.pop();//Popping the peek element from the Stack
+                infix.push("(" + operand1 + symbol + operand2 + ")");
+                //Pushing the whole expression into the Stack
+            }
+        }
+        //Displaying the result
         System.out.println("The Infix equivalent of the given prefix expression is : ");
         System.out.println(infix.peek());
     }
@@ -197,9 +292,24 @@ class PostfixPrefixEvaluation extends AdapterClass{
         return;
     }
 
+    //To reverse the expression
+    private String strReverse(String expression){
+        /*This is a private method which reverses the passed String and returns a new reversed String */
+        int i;
+        String newExpression = "";//Taking a newExpression String variable to store the reversed String.
+        char ch;
+        //Traversing through the String expression from lenght-1 to 0
+        for(i = expression.length()-1; i>=0; i--){
+            ch = expression.charAt(i);
+            newExpression += ch;//Appending the characters into the newExpression
+        }
+        return newExpression;//Returning the Reverse String
+    }
+
     //Method for the Postfix Expression Evaluation
     public int postfixEvaluation(String expression){
-        //This non-static method of the class does the evaluation of any postfix expression
+        //This non-static method of the class which does the evaluation of any postfix expression
+        //This method returns the result of the evaluation to the caller.
         //Taking the values of each operand of the expression.
         takeValue(expression);
         int i,a,b,temp = 0;
@@ -239,14 +349,53 @@ class PostfixPrefixEvaluation extends AdapterClass{
         }//end for
     return s.pop();//Pop and return the Stack top to obtain the final result after evaluation
     }
-}
 
-class Test{
-    public static void main(String[] args) {
-        PostfixPrefixEvaluation ppe = new PostfixPrefixEvaluation();
-        int result = ppe.postfixEvaluation("ab+cd-*");
-        System.out.println("The result of the postfix evaluation is : "+result);
-        ToInfix toInfix = new ToInfix();
-        toInfix.postfixToInfix("ab+cd-*");
+    //Prefix Evaluation
+    public int prefixEvaluation(String expression){
+        //This a non-static method which evaluates the given prefix expression.
+        //This method returns the result of the evaluation to the caller.
+        int i = 0,a = 0,b = 0,temp = 0;
+        //Taking the values of each operand of the expression.
+        takeValue(expression);
+        //Storing the reversed expression in a newExpression String variable
+        String newExpression = strReverse(expression);
+        //For loop for iterating through the new reversed String
+        for(i = 0; i<newExpression.length(); i++){
+            char symbol = newExpression.charAt(i);
+            //If the symbol of the expression is an operand or not
+            if(isOperand(symbol) == 1){
+                //If it is then push the corresponding value of the operand into the operandStack
+                s.push(values[newExpression.length()-i-1]);
+            }
+            //If the symbol of the xpression is not an operand then it must be an operator
+            else{
+                //If it is then pop the operand Stack two times
+                a = s.pop();
+                b = s.pop();
+                //Switch Case
+                switch(symbol){
+                    //Perform the following required operations as the operator is encountered
+                    case '+':
+                        temp = a + b;
+                        break;
+                    case '-':
+                        temp = a - b;
+                        break;
+                    case '*':
+                        temp = a * b;
+                        break;
+                    case '/':
+                        temp = a/b;
+                        break;
+                    case '^':
+                    case '$':
+                        temp = (int)Math.pow(a,b);
+                        break;
+                }
+                //Push the result of the evaluation of the two popped operands in to the Stack again
+                s.push(temp);
+            }
+        }
+        return s.pop();//Poping and returning the result of the evaluation
     }
 }
