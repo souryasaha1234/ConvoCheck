@@ -1,22 +1,22 @@
 import java.util.Scanner;
 import java.util.*;
-//Infix Postfix and Prefix Convertor
-class InfixPostfixPrefixConvertor extends AdapterClass{
-    /*This class is a infix, Postfix, Prefix Convertor class.
-     * This class has some private and public methods still now.
-     * The class is not fully ready yet.... If any Contributions Possible please come forward.
-     * And Also provide the suitable comment lines of this class.
-    */
-    String outputArray;//Resultant output array
-    InfixPostfixPrefixConvertor(){
-        //It is a no-arg constructor which initializes the resultant output array to blank.
-        outputArray = "";
-    }
-    OperatorStack ops = new OperatorStack();//Creating an OperatorStack class object instance
-    
+
+//Basic Methods Class
+class BasicMethods{
+    /*This class contains all the basic methods needed for the infix, postfix, prefix conversion and their
+     * evaluation.
+     * The class contains 4 methods -->
+     * 1) isOperand --> Checks whether the symbol of the expression is an operand or not. If it is then,
+     *                  the method returns 1 otherwise 0.
+     * 2) isOperator --> Checks whether the symbol of the expression is an operator or not.
+     *                   If it is then, the method returns 1 and otherwise 0.
+     * 3) sreReverse --> Takes a String of expression and returns a newly reversed expression to the caller.
+     * 4) precedence --> Checks and returns the precedence of the operator.
+     */
+
     //To check if the symbol is an operand or not
-    private int isOperand(char operand){
-        /*This is a private method which checks that the symbol of the given infix/postfix/prefix expression
+    public int isOperand(char operand){
+        /*This is a public method which checks that the symbol of the given infix/postfix/prefix expression
          * is operand or not
          */
         if((operand >= 'a' && operand <= 'z')||(operand >= 'A' && operand <= 'Z')){
@@ -26,8 +26,8 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
     }
 
     //To check the symbol is an operator or not
-    private int isOperator(char operator){
-        /*This is a private method which checks that the symbol of the given infix/postfix/prefix expression
+    public int isOperator(char operator){
+        /*This is a public method which checks that the symbol of the given infix/postfix/prefix expression
          * is a operator or not. This is done by using switch case
          */
         switch(operator){
@@ -45,8 +45,8 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
     }
 
     //To reverse the expression
-    private String strReverse(String expression){
-        /*This is a private method which reverses the passed String and returns a new reversed String */
+    public String strReverse(String expression){
+        /*This is a public method which reverses the passed String and returns a new reversed String */
         int i;
         String newExpression = "";//Taking a newExpression String variable to store the reversed String.
         char ch;
@@ -59,8 +59,8 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
     }
 
     //To check the precedence of the operator
-    private int precedence(char operator){
-        /*This is a private method which returns the precedence of the operators in the given
+    public int precedence(char operator){
+        /*This is a public method which returns the precedence of the operators in the given
          * infix/postfix/prefix expression
          */
         switch(operator){
@@ -79,6 +79,33 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
                 return 0;
         }
     }
+}
+
+
+
+//Infix Postfix and Prefix Convertor
+class InfixPostfixPrefixConvertor extends AdapterClass{
+    /*This class is a infix, Postfix, Prefix Convertor class.
+     * This class has public methods.
+     * The class is fully ready.... If any Contributions Possible please come forward.
+     * And Also provide the suitable comment lines of this class.
+     * This class implements two methods of the interface ConvertorInterf. They are as follows : 
+     * 1) infixToPostfix() --> The methods is used to convert an Infix expression given by the user 
+     *                         to it's equivalent Postfix Expression. This method take only one parameter
+     *                         as a String expression. It has a void return type.
+     * 2) infixToPrefix() --> The method is used to convert an Infix Expression given by the user to it's
+     *                        equivalent Prefix Expression. This method take only one parameter as String
+     *                        expression. It has a void return type.
+    */
+    String outputArray;//Resultant output array
+    InfixPostfixPrefixConvertor(){
+        //It is a no-arg constructor which initializes the resultant output array to blank.
+        outputArray = "";
+    }
+    OperatorStack ops = new OperatorStack();//Creating an OperatorStack class object instance
+    
+    BasicMethods bsm = new BasicMethods();//Creating a BasicMethods Class object instance
+    
     //Infix to Postfix Convertor Method
     public void infixToPostfix(String expression){
         /*This is a public method which is implemented here.
@@ -89,7 +116,7 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         /*This for loop which iterates through the whole expression */
         for(i = 0; i<expression.length(); i++){
             //If the symbol is an operand
-            if(this.isOperand(expression.charAt(i)) == 1){
+            if(bsm.isOperand(expression.charAt(i)) == 1){
                 outputArray += expression.charAt(i);
                 continue;
             }
@@ -99,11 +126,11 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
                 continue;
             }
             //If the symbol is an operator
-            if(this.isOperator(expression.charAt(i)) == 1){
+            if(bsm.isOperator(expression.charAt(i)) == 1){
                 /*This while loop runs only when the precedence of the incoming symbol is lower
                  * than the precedence of the Symbol in the Stack top.
                  */
-                while(ops.top != -1 && precedence(expression.charAt(i)) <= precedence(ops.operatorStack[ops.top])){
+                while(ops.top != -1 && bsm.precedence(expression.charAt(i)) <= bsm.precedence(ops.operatorStack[ops.top])){
                     /*If it is, then pop the Stack top element until the precedence of the symbol is
                      * higher than the precedence of the Stack top Symbol
                      */
@@ -136,15 +163,15 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
          * This method is used to convert a given infix expression to it's equivalent prefix
          */
         //First reverse the expression and store the new reversed expression in a String variable newExpression
-        String newExpression = strReverse(expression);
+        String newExpression = bsm.strReverse(expression);
         int i;
         //Iterate through the whole reversed expression
         for(i = 0; i<newExpression.length(); i++){
             char symbol = newExpression.charAt(i);
             //If the symbol of the expression is an operator
-            if(isOperator(symbol) == 1){
+            if(bsm.isOperator(symbol) == 1){
                 //while Loop To pop all the operators of higher precedence if there is any.
-                while(ops.top != -1 && precedence(symbol) < precedence(ops.operatorStack[ops.top])){
+                while(ops.top != -1 && bsm.precedence(symbol) < bsm.precedence(ops.operatorStack[ops.top])){
                     outputArray += ops.popOperatorStack();
                 }
                 //After the execution of this while push the Symbol into the operator Stack
@@ -175,7 +202,7 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         }
         //Printing the result
         System.out.println("The equivalent prefix expression of the given infix expression is : ");
-        System.out.println(strReverse(outputArray));
+        System.out.println(bsm.strReverse(outputArray));
     }
 }
 //ToInfix Convertor class
@@ -186,15 +213,9 @@ class ToInfix extends AdapterClass{
      *                         Takes a parameter as expression of String type
      * 2) prefixToInfix() --> Converts the prefix expression to it's equivalent infix expression
      *                        Takes a parameter as expression of String type
-     * This class also contains a private method isOperand() which checks if the symbol of the expression
-     * is an operand or not.
     */
     
-    //Private Method isOperand of boolean return type
-    private boolean isOperand(char operand){
-        //Returns true if the symbol of the expression is an operand, otherwise false
-        return (operand >= 'a' && operand <= 'z') || (operand >= 'A' && operand <= 'Z');
-    }
+    BasicMethods bsm = new BasicMethods();//Cretaing BasicMethods class object instance
 
     //Public method postfixToInfix of void return type
     public void postfixToInfix(String expression){
@@ -205,7 +226,7 @@ class ToInfix extends AdapterClass{
         for(int i = 0; i<expression.length(); i++){
             char symbol = expression.charAt(i);
             //If the symbol is an operand then push into the Stack
-            if(isOperand(symbol)){
+            if(bsm.isOperand(symbol) == 1){
                 infix.push(symbol + "");//Pushing symbol into the Stack
             }
             //If the symbol is not an operand then it should be an operator
@@ -235,7 +256,7 @@ class ToInfix extends AdapterClass{
         for(int i = expression.length()-1; i>=0; i--){
             char symbol = expression.charAt(i);
             //If the symbol is an operand then push into the Stack
-            if(isOperand(symbol)){
+            if(bsm.isOperand(symbol) == 1){
                 infix.push(symbol+"");//Pushing the symbol into the Stack
             }
             //If the symbol is not an operand then it should be an operator
@@ -261,49 +282,41 @@ class ToInfix extends AdapterClass{
 
 //Postfix and Prefix Evaluation Class
 class PostfixPrefixEvaluation extends AdapterClass{
+    /*This is class for evaluating the Postfix and Prefix Expressions entered by the users.
+     * This class has 3 methods , one private and two public methods.
+     * 1) takeValue() --> This method is a private method which is used to enter values to each of the 
+     *                    operands of the expression from the user.
+     * 2) postfixEvaluation() --> This is a public method which is used to evaluate the postfix expression
+     *                            with respect to the values of the operands given by the user.
+     *                            This method returns the result of the evaluation as an integer.
+     * 3) prefixExpression() --> This is a public method which is used to evaluate the prefix expression
+     *                            with respect to the values of the operands given by the user.
+     *                            This method returns the result of the evaluation as an integer.
+     */
     int evaluation;
     int[] values;
     StackOperations s = new StackOperations();
     Scanner sc = new Scanner(System.in);
     PostfixPrefixEvaluation(){
+        /*A no arg Constructor to declare the value of evaluation to be 0 and declare the integer array values */
         evaluation = 0;
         values = new int[32];
     }
-    //To check the symbol of the expression is an operand or not
-    private int isOperand(char operand){
-        /*This is a private method which checks that the symbol of the given infix/postfix/prefix expression
-         * is operand or not
-         */
-        if((operand >= 'a' && operand <= 'z')||(operand >= 'A' && operand <= 'Z')){
-            return 1;//Return 1 if the symbol is an operand
-        }
-        return 0;//Otherwise 0
-    }
+    
+    BasicMethods bsm = new BasicMethods();//Cretaing BasicMethods class object instance
 
     //To enter values to each of the operands of the expression from the user
     private void takeValue(String expression){
         int i;
+        //Traversing through the whole expression
         for(i = 0; i<expression.length(); i++){
-            if(isOperand(expression.charAt(i)) == 1){
+            //If the symbol of the expression is an operand then enter the value of that operand.
+            if(bsm.isOperand(expression.charAt(i)) == 1){
                 System.out.println("Enter the value of the operand "+expression.charAt(i));
                 values[i] = sc.nextInt();
             }
         }
         return;
-    }
-
-    //To reverse the expression
-    private String strReverse(String expression){
-        /*This is a private method which reverses the passed String and returns a new reversed String */
-        int i;
-        String newExpression = "";//Taking a newExpression String variable to store the reversed String.
-        char ch;
-        //Traversing through the String expression from lenght-1 to 0
-        for(i = expression.length()-1; i>=0; i--){
-            ch = expression.charAt(i);
-            newExpression += ch;//Appending the characters into the newExpression
-        }
-        return newExpression;//Returning the Reverse String
     }
 
     //Method for the Postfix Expression Evaluation
@@ -316,7 +329,7 @@ class PostfixPrefixEvaluation extends AdapterClass{
         //Traversing through the whole expression
         for(i = 0; i<expression.length(); i++){
             //Checking the Symbol of the expression is operand or not
-            if(isOperand(expression.charAt(i)) == 1){
+            if(bsm.isOperand(expression.charAt(i)) == 1){
                 s.push(values[i]);
             }
             //If the symbol is not an operand then it must be an operator
@@ -358,12 +371,12 @@ class PostfixPrefixEvaluation extends AdapterClass{
         //Taking the values of each operand of the expression.
         takeValue(expression);
         //Storing the reversed expression in a newExpression String variable
-        String newExpression = strReverse(expression);
+        String newExpression = bsm.strReverse(expression);
         //For loop for iterating through the new reversed String
         for(i = 0; i<newExpression.length(); i++){
             char symbol = newExpression.charAt(i);
             //If the symbol of the expression is an operand or not
-            if(isOperand(symbol) == 1){
+            if(bsm.isOperand(symbol) == 1){
                 //If it is then push the corresponding value of the operand into the operandStack
                 s.push(values[newExpression.length()-i-1]);
             }
