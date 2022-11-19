@@ -1,9 +1,9 @@
 //Interface of the Convo Check project
 interface ConvertorInterf{
-    void infixToPrefix(String expression);
-    void prefixToInfix(String expression);
-    void infixToPostfix(String expression);
-    void postfixToInfix(String expression);
+    String infixToPrefix(String expression);
+    String prefixToInfix(String expression);
+    String infixToPostfix(String expression);
+    String postfixToInfix(String expression);
     int postfixEvaluation(String expression);
     int prefixEvaluation(String expression);
     String Convert(String num,int x,int y);
@@ -11,10 +11,18 @@ interface ConvertorInterf{
 
 //Adapter class implementing the interface methods
 abstract class AdapterClass implements ConvertorInterf{
-    public void infixToPrefix(String expression){}
-    public void prefixToInfix(String expression){}
-    public void infixToPostfix(String expression){}
-    public void postfixToInfix(String expression){}
+    public String infixToPrefix(String expression){
+        return null;
+    }
+    public String prefixToInfix(String expression){
+        return null;
+    }
+    public String infixToPostfix(String expression){
+        return null;
+    }
+    public String postfixToInfix(String expression){
+        return null;
+    }
     public int postfixEvaluation(String expression){
         return 0;
     }

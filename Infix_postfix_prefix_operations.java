@@ -107,7 +107,7 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
     BasicMethods bsm = new BasicMethods();//Creating a BasicMethods Class object instance
     
     //Infix to Postfix Convertor Method
-    public void infixToPostfix(String expression){
+    public String infixToPostfix(String expression){
         /*This is a public method which is implemented here.
          * This method is used to convert a given infix expression to it's equivalent postfix.
          */
@@ -152,13 +152,14 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         while(ops.top != -1){
             outputArray += ops.popOperatorStack();
         }
-        System.out.println("The equivalent postfix expression of the given infix expression is : ");
-        System.out.println(outputArray);//Printing of Result
+        //System.out.println("The equivalent postfix expression of the given infix expression is : ");
+        //System.out.println(outputArray);//Printing of Result
+        return outputArray;
     }
     
 
     //Infix to Prefix Convertor Method
-    public void infixToPrefix(String expression){
+    public String infixToPrefix(String expression){
         /*This is a public method which is implemented here.
          * This method is used to convert a given infix expression to it's equivalent prefix
          */
@@ -201,8 +202,10 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
             outputArray += ops.popOperatorStack();
         }
         //Printing the result
-        System.out.println("The equivalent prefix expression of the given infix expression is : ");
-        System.out.println(bsm.strReverse(outputArray));
+        /*System.out.println("The equivalent prefix expression of the given infix expression is : ");
+        System.out.println(bsm.strReverse(outputArray));*/
+        String newArray = bsm.strReverse(outputArray);
+        return newArray;
     }
 }
 //ToInfix Convertor class
@@ -218,7 +221,7 @@ class ToInfix extends AdapterClass{
     BasicMethods bsm = new BasicMethods();//Cretaing BasicMethods class object instance
 
     //Public method postfixToInfix of void return type
-    public void postfixToInfix(String expression){
+    public String postfixToInfix(String expression){
         //Creating an object reference to the Stack of String
         Stack<String> infix = new Stack<String>();
 
@@ -244,12 +247,13 @@ class ToInfix extends AdapterClass{
             }
         }
         //Displaying the result
-        System.out.println("The Infix equivalent of the given postfix expression is : ");
-        System.out.println(infix.peek());
+        /*System.out.println("The Infix equivalent of the given postfix expression is : ");
+        System.out.println(infix.peek());*/
+        return infix.peek();
     }
 
     //Public method of prefixToInfix of void return type
-    public void prefixToInfix(String expression){
+    public String prefixToInfix(String expression){
         //Creating an object reference to the Stack of String
         Stack<String> infix = new Stack<String>();
         //For loop that iterates through the whole expression in reverse order
@@ -274,8 +278,9 @@ class ToInfix extends AdapterClass{
             }
         }
         //Displaying the result
-        System.out.println("The Infix equivalent of the given prefix expression is : ");
-        System.out.println(infix.peek());
+        /*System.out.println("The Infix equivalent of the given prefix expression is : ");
+        System.out.println(infix.peek());*/
+        return infix.peek();
     }
 }
 
