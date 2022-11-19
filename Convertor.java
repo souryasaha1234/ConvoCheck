@@ -6,6 +6,7 @@ interface ConvertorInterf{
     void postfixToInfix(String expression);
     int postfixEvaluation(String expression);
     int prefixEvaluation(String expression);
+    String Convert(String num,int x,int y);
 }
 
 //Adapter class implementing the interface methods
@@ -19,5 +20,8 @@ abstract class AdapterClass implements ConvertorInterf{
     }
     public int prefixEvaluation(String expression){
         return 0;
+    }
+    public String Convert(String num,int x,int y){
+        return null;
     }
 }
