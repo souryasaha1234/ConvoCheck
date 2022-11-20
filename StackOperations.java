@@ -8,7 +8,7 @@
  */
 
 
-class Stack{
+class StackOperations{
     //Stack Class
     int[] array = new int[32];//The integer Stack
     int top = -1;//Setting the top value as -1 as there is no element initially
