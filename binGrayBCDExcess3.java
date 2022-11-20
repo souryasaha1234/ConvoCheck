@@ -1,4 +1,23 @@
 import java.util.Scanner;
+/*
+ here we usd 4 clases named 1. binaryAndGray 2.binaryAndBCD 3. binaryAndExcess3 4. grayAndExcess
+    in each class methods are-
+        1. binaryAndGray 
+            a) static int binaryToDecimal(int n) --> coverts binary integer to decemal integer
+            b) static int decimalToBinary(int N) --> coverts decemal integer to binary integer
+            c) public int binToGray(int bin) --> coverts binary integer to gray code integer
+            d) public int grayToBin(int gray) --> coverts gray code integer to binary integer
+        2. binaryAndBCD 
+            a) public String decToBCD(int dec) --> coverts decimal integer to BCD String
+            b) public int BCDToBin(int bcd) --> coverts BCD integer to binary integer
+        3. binaryAndExcess3
+            a) public int binToExcess3(int bin) --> coverts binary integer to Excess3 integer
+            a) public int Excess3ToBin(int Excess) --> coverts Excess3 integer to binary integer
+        4. grayAndExcess
+            a) public int grayToExcess3(int gray) --> coverts gray code integer to Excess3 integer
+            b) public int Excess3ToGray(int excess) --> coverts Excess3 integer to gray code integer
+ */
+
 class binaryAndGray{ //code checked and okay
     static int binaryToDecimal(int n){
         int dec = 0;
@@ -25,7 +44,7 @@ class binaryAndGray{ //code checked and okay
         } 
         return B_Number; 
     } 
-    int binToGray(int bin){
+    public int binToGray(int bin){
         int gray;
         //convert binary into decimal
         int dec = binaryToDecimal(bin);
@@ -36,7 +55,7 @@ class binaryAndGray{ //code checked and okay
     private char flip(char c){
         return (c == '0') ? '1' : '0';
     }
-    int grayToBin(int gray){
+    public int grayToBin(int gray){
         String bin = "", gray_s = Integer.toString(gray);// converting gray into string
         bin += gray_s.charAt(0); //MSB is same
         for(int i=1; i<gray_s.length(); i++){
@@ -51,7 +70,7 @@ class binaryAndGray{ //code checked and okay
 }
 
 class binaryAndBCD{ ////code checked and oka
-    String binToBCD(int dec){
+    public String decToBCD(int dec){
         String str = "";
         if(dec == 0){ //base case
             str += "0000";
@@ -73,7 +92,7 @@ class binaryAndBCD{ ////code checked and oka
         return str;
     }
     
-    int BCDToBin(int bcd){
+    public int BCDToBin(int bcd){
         String s = Integer.toString(bcd);
         //length of the string
         int l = s.length(), num = 0, mul = 1, sum = 0;
@@ -116,7 +135,7 @@ class binaryAndBCD{ ////code checked and oka
 }
 
 class binaryAndExcess3{
-    int binToExcess3(int bin){
+    public int binToExcess3(int bin){
         int a, dec;
         dec = binaryAndGray.binaryToDecimal(bin);
         // System.out.println(dec);
@@ -136,11 +155,11 @@ class binaryAndExcess3{
         }
         // System.out.println(rev);
         binaryAndBCD b = new binaryAndBCD();
-        String excess = b.binToBCD(rev);
+        String excess = b.decToBCD(rev);
         int x = Integer.parseInt(excess);
         return x;
     }
-    int Excess3ToBin(int Excess){
+    public int Excess3ToBin(int Excess){
         binaryAndBCD b = new binaryAndBCD();
         int dec, bin;
         bin = b.BCDToBin(Excess);
@@ -165,6 +184,23 @@ class binaryAndExcess3{
     }
 }
 
+class grayAndExcess{
+    public int grayToExcess3(int gray){
+        binaryAndGray g = new binaryAndGray();
+        int bin = g.grayToBin(gray);
+        binaryAndExcess3 e = new binaryAndExcess3();
+        int excess = e.binToExcess3(bin);
+        return excess;
+    }
+    public int Excess3ToGray(int excess){
+        binaryAndExcess3 e = new binaryAndExcess3();
+        int bin = e.Excess3ToBin(excess);
+        binaryAndGray g = new binaryAndGray();
+        int gray = g.binToGray(bin);
+        return gray;
+    }
+}
+
 class Test{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -183,11 +219,11 @@ class Test{
         dec =  binaryAndGray.binaryToDecimal(bin_num);
         // passing the decemal number and getting BCD code in binary
         binaryAndBCD bb = new binaryAndBCD();
-        String bcd_str =bb.binToBCD(dec);//return type = String
+        String bcd_str =bb.decToBCD(dec);//return type = String
         System.out.println("BCD code:" + bcd_str); //printing BCD code
     
         
-        // passing the decemal and getting Excess-3 code in binary
+        // passing the binary and getting Excess-3 code in binary
         binaryAndExcess3 be = new binaryAndExcess3();
         int excess3 = be.binToExcess3(bin_num);//return type = int
         System.out.println("Excess-3 code: " + excess3); //printing binary form of the BCD code
@@ -197,8 +233,7 @@ class Test{
         //input gray code
         System.out.print("Enter a gray code: ");
         gray =  sc.nextInt();
-        binaryAndGray bg = new binaryAndGray();
-        bin =bg.grayToBin(gray);//return type = int
+        bin =b.grayToBin(gray);//return type = int
         System.out.println("Binary number of that: " + bin); //printing binary form of the gray code
         
         
@@ -206,20 +241,35 @@ class Test{
         // input bcd code
         System.out.print("Enter a bcd: ");
         bcd =  sc.nextInt();
-        binaryAndBCD bbcd = new binaryAndBCD();
-        bin =bbcd.BCDToBin(bcd);//return type = int
+        bin =bb.BCDToBin(bcd);//return type = int and it is returning a binary string
         dec = binaryAndGray.binaryToDecimal(bin);
-        System.out.println("Binary number of that: " + dec); //printing binary form of the BCD
-
-
+        System.out.println("Decimal number of that: " + dec); //printing binary form of the BCD
+        
+        
         // passing the Excess-3 and getting code in binary
         //input Excess-3 code
         System.out.print("Enter a Excess-3 code: ");
         excess3 =  sc.nextInt();
-        binaryAndExcess3 bee = new binaryAndExcess3();
-        bin =bee.Excess3ToBin(excess3);//return type = int
+        bin =be.Excess3ToBin(excess3);//return type = int
         System.out.println("Binary number of that: " + bin); //printing binary form of the gray code
-
+        
+        
+        //psssing gray code and getting exces3 code
+        //input gray code
+        System.out.print("Enter a gray code: ");
+        gray =  sc.nextInt();
+        grayAndExcess ge = new grayAndExcess();
+        excess3 = ge.grayToExcess3(gray); //return type = int
+        System.out.println("Excess3 of that: " + excess3); //printing the returned excess3 code
+        
+        
+        // passing the Excess-3 and getting gray code
+        //input Excess-3 code
+        System.out.print("Enter a Excess-3 code: ");
+        excess3 =  sc.nextInt();
+        gray = ge.Excess3ToGray(excess3);
+        System.out.println("Gray code of that: " + gray); //printing the returned gray code    
+        
         sc.close();
     }
 }
