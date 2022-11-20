@@ -4,7 +4,7 @@ class MainConvertor{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int ch;
-        String options;
+        char options;
         do{
             System.out.println("=============================================================");
             System.out.println("Convertor Operations");
@@ -44,14 +44,17 @@ class MainConvertor{
                         System.out.println("    g) Terminate this Operation.");
                         System.out.println("================================================================");
                         System.out.println("Enter which Infix Postfix Prefix Conversion Operation would you like to perform : ");
-                        options = raj2.nextLine();
+                        options = raj2.next().charAt(0);
                         String expression = "",output = "";
                         int evaluation;
                         System.out.println("================================================================");
                         ToInfix toInfix = new ToInfix();
                         Scanner raj = new Scanner(System.in);
                         switch (options) {
-                            case "a":
+                            case 'g':
+                                System.out.println("Terminating...");
+                                break;
+                            case 'a':
                                 InfixPostfixPrefixConvertor ippc_a = new InfixPostfixPrefixConvertor();
                                 System.out.println("Infix to Postfix Conversion.");
                                 System.out.println("------------------------------------");
@@ -63,7 +66,7 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case "b":
+                            case 'b':
                                 InfixPostfixPrefixConvertor ippc_b = new InfixPostfixPrefixConvertor();
                                 System.out.println("Infix to Prefix Conversion.");
                                 System.out.println("------------------------------------");
@@ -75,7 +78,7 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case "c":
+                            case 'c':
                                 System.out.println("Postfix to Infix Conversion.");
                                 System.out.println("------------------------------------");
                                 System.out.println("Enter the Postfix Expression you want to Convert : ");
@@ -86,7 +89,7 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case "d":
+                            case 'd':
                                 System.out.println("Prefix to Infix Conversion.");
                                 System.out.println("------------------------------------");
                                 System.out.println("Enter the Prefix Expression you want to Convert : ");
@@ -97,7 +100,7 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case "e":
+                            case 'e':
                                 System.out.println("Postfix Evaluation.");
                                 System.out.println("------------------------------------");
                                 System.out.println("Enter the Postfix Expression you want to Convert : ");
@@ -109,7 +112,7 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case "f":
+                            case 'f':
                                 System.out.println("Prefix Evaluation.");
                                 System.out.println("------------------------------------");
                                 System.out.println("Enter the Prefix Expression you want to Convert : ");
@@ -121,16 +124,15 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case "g":
-                                System.out.println("Terminating...");
-                                break;
+                            default:
+                                System.out.println("Please enter a valid character...");
                             
                         }
                         //raj2.close();
                         /*if(options!="g"){
                             options = null;
                         }*/
-                    }while(options!="g");
+                    }while(options!='g');
                     break;
                 case 2:
                     Base_2_to_36 object = new Base_2_to_36();
@@ -144,10 +146,12 @@ class MainConvertor{
                     System.out.println("Enter the base to which it will be Converted : ");
                     y = sourya.nextInt();
                     String convert = object.Convert(number, x, y);
-                    System.out.println("The number "+number+" of base "+x+"converted to base " + y + "becomes : "+convert);
+                    System.out.println("The number "+number+" of base "+x+" converted to base " + y + " becomes : "+convert);
                     System.out.println();
                     //sourya.close();
                     break;
+                case 3:
+                    
             }
         }while(ch!=0);
         //sc.close();
