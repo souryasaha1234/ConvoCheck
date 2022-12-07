@@ -30,8 +30,9 @@ There are also some Conversions and evaluations based on expressions we use in o
 Building Blocks of the App
 -----------------------------------------------------------------------------------------
 
-ConvoCheck is a JAVA based Web-App
+ConvoCheck is a JAVA based Web-App.
 Technologies and Languages Used in this Web-App
+----------------------------------------------------
       1) JAVA
       2) HTML
       3) CSS
