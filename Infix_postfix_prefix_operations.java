@@ -10,7 +10,7 @@ class BasicMethods{
      *                  the method returns 1 otherwise 0.
      * 2) isOperator --> Checks whether the symbol of the expression is an operator or not.
      *                   If it is then, the method returns 1 and otherwise 0.
-     * 3) sreReverse --> Takes a String of expression and returns a newly reversed expression to the caller.
+     * 3) strReverse --> Takes a String of expression and returns a newly reversed expression to the caller.
      * 4) precedence --> Checks and returns the precedence of the operator.
      */
 
