@@ -20,7 +20,10 @@ There are also some Conversions and evaluations based on expressions we use in o
 
 **We have also added an unique feature which is a LOGIN page**
 
-      Any user can create his/her account with our web app and do any conversions as the user wants to. All the conversions history will be saved securely and when the user again logins into our app they will get some suggesstions of conversions based on their conversion history and can also retreive their past conversions.
+      Any user can create his/her account with our web app and do any conversions as the user wants to.
+      All the conversions history will be saved securely and when the user again logins into our app 
+      they will get some suggesstions of conversions based on their conversion history 
+      and can also retreive their past conversions.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
