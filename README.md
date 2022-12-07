@@ -9,19 +9,20 @@ i.e from any base to any base.
 Suppose an user wants to convert a base 6 number to a base 10 number ... or any Binary number to it's equivalent Hexadecimal Form.
 
 This web app also convert some codes to it's any equivalent forms, such as follows : 
-1) Gray Code
-2) Binary Coded Decimals(BCD)
-3) Excess-3 Code
+      1) Gray Code
+      2) Binary Coded Decimals(BCD)
+      3) Excess-3 Code
 
 There are also some Conversions and evaluations based on expressions we use in our Data Structures such as follows:
-1) Infix Expression
-2) Postfix Expression
-3) Prefix Expression
+      1) Infix Expression
+      2) Postfix Expression
+      3) Prefix Expression
 
 **We have also added an unique feature which is a LOGIN page**
+
       Any user can create his/her account with our web app and do any conversions as the user wants to. All the conversions history will be saved securely and when the user again logins into our app they will get some suggesstions of conversions based on their conversion history and can also retreive their past conversions.
 
-============================================================================================================
+----------------------------------------------------------------------------------------------------------------------------
 
 Building Blocks of the App
 -----------------------------------------------------------------------------------------
@@ -70,18 +71,23 @@ Infix_postfix_prefix_operations.java
 -----------------------------------------------------------------------------
 1) BasicMethods Class --> 
 ------------------------------
-      This class contains all the basic methods needed for the infix, postfix and prefix conversion and their evaluation such as isOperand() method, isOperator() method, strReverse() method and precedence() method. The functionalities of these methods is fully explained in the Infix_postfix_prefix_operations.java file.
+      This class contains all the basic methods needed for the infix, postfix and prefix conversion and their evaluation 
+      such as isOperand() method, isOperator() method, strReverse() method and precedence() method. 
+      The functionalities of these methods is fully explained in the Infix_postfix_prefix_operations.java file.
      
 2) InfixPostfixPrefixConvertor Class -->
 -------------------------------------------
-      This class is a infix, Postfix, Prefix Convertor class i.e. it converts an infix expression to it's equivalent Postfix or Prefix Expression as required By the User. This class extends the Adapter Class to implement the ConvetorInterf Interface method. For More details visit the file.
+      This class is a infix, Postfix, Prefix Convertor class i.e. it converts an infix expression to it's equivalent Postfix or Prefix Expression as required By the User.
+      This class extends the Adapter Class to implement the ConvetorInterf Interface method. For More details visit the file.
 
 3) ToInfix Class -->
 -----------------------
-      This class converts Postfix and Prefix expressions to its equivalent Infix Expression. This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file.
+      This class converts Postfix and Prefix expressions to its equivalent Infix Expression. 
+      This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file.
 
  
 4) PostfixPrefixEvaluation Class -->
 ---------------------------------------
-      This is class for evaluating the Postfix and Prefix Expressions entered by the users. This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file.
-=======================================================================================================================================
+      This is class for evaluating the Postfix and Prefix Expressions entered by the users. 
+      This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file.
+---------------------------------------------------------------------------------------------------------------------------------------
