@@ -1,7 +1,7 @@
 class Base_2_to_36 extends AdapterClass
 {
-	/*This function will at first convert the String num to decimal and then convert it to the equivalent base y number
-	  so we have used decimal nnumber as medium to convert base x number to the quivalent base y number...*/
+	/*This method will at first convert the String num to decimal and then convert it to the equivalent base y number
+	  so we have used decimal number as medium to convert base x number to the quivalent base y number...*/
 	public String Convert(String num,int x,int y){
 		
 		//A digits string is fixed so that the index is to be compared and get the number such as A - 10,B - 11,C-12 and so on... 

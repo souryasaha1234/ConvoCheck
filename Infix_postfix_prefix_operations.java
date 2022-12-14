@@ -10,7 +10,7 @@ class BasicMethods{
      *                  the method returns 1 otherwise 0.
      * 2) isOperator --> Checks whether the symbol of the expression is an operator or not.
      *                   If it is then, the method returns 1 and otherwise 0.
-     * 3) sreReverse --> Takes a String of expression and returns a newly reversed expression to the caller.
+     * 3) strReverse --> Takes a String of expression and returns a newly reversed expression to the caller.
      * 4) precedence --> Checks and returns the precedence of the operator.
      */
 
@@ -128,7 +128,7 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
             //If the symbol is an operator
             if(bsm.isOperator(expression.charAt(i)) == 1){
                 /*This while loop runs only when the precedence of the incoming symbol is lower
-                 * than the precedence of the Symbol in the Stack top.
+                 * than or equal to the precedence of the Symbol in the Stack top.
                  */
                 while(ops.top != -1 && bsm.precedence(expression.charAt(i)) <= bsm.precedence(ops.operatorStack[ops.top])){
                     /*If it is, then pop the Stack top element until the precedence of the symbol is

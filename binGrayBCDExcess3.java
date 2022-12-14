@@ -1,24 +1,64 @@
 import java.util.Scanner;
 /*
- here we usd 4 clases named 1. binaryAndGray 2.binaryAndBCD 3. binaryAndExcess3 4. grayAndExcess
-    in each class methods are-
-        1. binaryAndGray 
-            a) static int binaryToDecimal(int n) --> coverts binary integer to decemal integer
-            b) static int decimalToBinary(int N) --> coverts decemal integer to binary integer
-            c) public int binToGray(int bin) --> coverts binary integer to gray code integer
-            d) public int grayToBin(int gray) --> coverts gray code integer to binary integer
-        2. binaryAndBCD 
-            a) public String decToBCD(int dec) --> coverts decimal integer to BCD String
-            b) public int BCDToBin(int bcd) --> coverts BCD integer to binary integer
-        3. binaryAndExcess3
-            a) public int binToExcess3(int bin) --> coverts binary integer to Excess3 integer
-            a) public int Excess3ToBin(int Excess) --> coverts Excess3 integer to binary integer
-        4. grayAndExcess
-            a) public int grayToExcess3(int gray) --> coverts gray code integer to Excess3 integer
-            b) public int Excess3ToGray(int excess) --> coverts Excess3 integer to gray code integer
+This is another part of the project Code Convertor where the BCD, Gray and Excess 3 codes are converted.
+Here we have used 4 classes named 
+    1. binaryAndGray Class
+       =====================
+       The primary motive of this class isto change a binary number to it's equivalent Gray code and 
+       a Gray code to it's equivalent Binary number with the help of decimal number system.
+       For this task to accomplish we have implemented 4 methods where two are from the Convertor interface in the Class as follows -->
+
+        a) static int binaryToDecimal(int n) --> coverts binary integer to decemal integer.It's a Static method.
+                The return type of this method is int. It takes one binary integer as a parameter.
+
+        b) static int decimalToBinary(int N) --> coverts decemal integer to binary integer.It's also a 
+                Static method. The return type of this method is also int. It takes one decimal integer as a 
+                parameter.
+
+        c) public int binToGray(int bin) --> coverts binary integer to gray code integer.It is a public method
+                with int return type and takes a binary integer as a parameter. This method of the Convertor Interface
+                is being implemented here.
+
+        d) public int grayToBin(int gray) --> coverts gray code integer to binary integer. It is a public method
+                with int return type and takes a gray code integer as a parameter. This method of the Convertor Interface
+                is being implemented here.
+    
+    2.  binaryAndBCD Class
+        ====================
+        This Class is used to Convert a Decimal number to it's equivalent BCD and a BCD code to it's 
+        equivalent Binary number.
+        For this we have implemented the two methods of the Convertor Interface as follows -->
+
+        a) public String decToBCD(int dec) --> coverts decimal integer to BCD String.It is public method
+                with String return type and takes a decimal integer as an argument.
+
+        b) public int BCDToBin(int bcd) --> coverts BCD integer to binary integer. It is a public method
+                with int return type and takes a BCD integer as a parameter.
+    
+    3. binaryAndExcess3 Class
+        ========================
+        This Class is used to convert a Binary Number to it's equivalent Excess 3 Code and Vice versa
+        For this we have implemented 2 methods of the Convertor Interface as follows -->
+
+        a) public int binToExcess3(int bin) --> coverts binary integer to Excess3 integer. It is a public method
+                with int return type and takes a Binary integer as a parameter.
+
+        b) public int Excess3ToBin(int Excess) --> coverts Excess3 integer to binary integer. It is a public method
+                with int return type and takes a Excess 3 integer as a parameter.
+    
+    4. grayAndExcess Class
+        ======================
+        This Class is used to convert a Gray Code Number to it's equivalent Excess 3 Code and Vice versa
+        For this we have implemented 2 methods of the Convertor Interface as follows -->
+
+        a) public int grayToExcess3(int gray) --> coverts gray code integer to Excess3 integer. It is a public method
+                with int return type and takes a Gray integer as a parameter.
+
+        b) public int Excess3ToGray(int excess) --> coverts Excess3 integer to gray code integer. It is a public method
+                with int return type and takes a Excess 3 integer as a parameter.
  */
 
-class binaryAndGray{ //code checked and okay
+class binaryAndGray extends AdapterClass{ //code checked and okay
     static int binaryToDecimal(int n){
         int dec = 0;
         int base = 1;
@@ -69,7 +109,7 @@ class binaryAndGray{ //code checked and okay
     }
 }
 
-class binaryAndBCD{ ////code checked and oka
+class binaryAndBCD extends AdapterClass{ ////code checked and oka
     public String decToBCD(int dec){
         String str = "";
         if(dec == 0){ //base case
@@ -134,7 +174,7 @@ class binaryAndBCD{ ////code checked and oka
     }
 }
 
-class binaryAndExcess3{
+class binaryAndExcess3 extends AdapterClass{
     public int binToExcess3(int bin){
         int a, dec;
         dec = binaryAndGray.binaryToDecimal(bin);
@@ -184,7 +224,7 @@ class binaryAndExcess3{
     }
 }
 
-class grayAndExcess{
+class grayAndExcess extends AdapterClass{
     public int grayToExcess3(int gray){
         binaryAndGray g = new binaryAndGray();
         int bin = g.grayToBin(gray);
