@@ -9,11 +9,13 @@ class MainConvertor{
             System.out.println("=============================================================");
             System.out.println("Convertor Operations");
             System.out.println("=============================================================");
-            System.out.println("1) Infix Postfix and Prefix Conversions and Evaluations.");
+            System.out.println("1) Infix Postfix and Prefix Conversions.");
             System.out.println("================================================================");
-            System.out.println("2) Base 2 to 36 Conversions.");
+            System.out.println("2) Infix-Postfix and Infix-Prefix Evaluations.");
             System.out.println("================================================================");
-            System.out.println("3) BCD, Gray and Excess 3 Conversions.");
+            System.out.println("3) Base 2 to 36 Conversions.");
+            System.out.println("================================================================");
+            System.out.println("4) BCD, Gray and Excess 3 Conversions.");
             System.out.println("================================================================");
             System.out.println("0) Exiting from the program.");
             System.out.println("================================================================");
@@ -34,9 +36,7 @@ class MainConvertor{
                         System.out.println("    b) Infix to Prefix Conversion.");
                         System.out.println("    c) Postfix to Infix Conversion.");
                         System.out.println("    d) Prefix to Infix Conversion.");
-                        System.out.println("    e) Postfix Evaluation.");
-                        System.out.println("    f) Prefix Evaluation.");
-                        System.out.println("    g) Terminate this Operation.");
+                        System.out.println("    e) Terminate this Operation.");
                         System.out.println("================================================================");
                         System.out.print("Enter which Infix Postfix Prefix Conversion Operation would you like to perform : ");
                         options = raj2.next().charAt(0);
@@ -45,7 +45,7 @@ class MainConvertor{
                         ToInfix toInfix = new ToInfix();
                         Scanner raj = new Scanner(System.in);
                         switch (options) {
-                            case 'g':
+                            case 'e':
                                 System.out.println("================================================================");
                                 System.out.println("Terminating...");
                                 System.out.println("================================================================");
@@ -96,7 +96,39 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case 'e':
+                            default:
+                                System.out.println("================================================================");
+                                System.out.println("Please enter a valid character...");
+                                System.out.println("================================================================");
+                            
+                        }
+                        //raj2.close();
+                        /*if(options!="g"){
+                            options = null;
+                        }*/
+                    }while(options!='e');
+                    break;
+                case 2:
+                    do{
+                        Scanner raj2 = new Scanner(System.in);
+                        System.out.println("================================================================");
+                        System.out.println("    a) Postfix Evaluation.");
+                        System.out.println("    b) Prefix Evaluation.");
+                        System.out.println("    c) Terminate this Operation.");
+                        System.out.println("================================================================");
+                        System.out.print("Enter which Infix Postfix Prefix Conversion Operation would you like to perform : ");
+                        options = raj2.next().charAt(0);
+                        String expression = "",output = "";
+                        int evaluation;
+                        //ToInfix toInfix = new ToInfix();
+                        Scanner raj = new Scanner(System.in);
+                        switch (options) {
+                            case 'c':
+                                System.out.println("================================================================");
+                                System.out.println("Terminating...");
+                                System.out.println("================================================================");
+                                break;
+                            case 'a':
                                 System.out.println("**************Postfix Evaluation**************");
                                 System.out.println("-----------------------------------------------");
                                 System.out.println("Enter the Postfix Expression you want to Convert : ");
@@ -108,7 +140,7 @@ class MainConvertor{
                                 System.out.println();
                                 //raj.close();
                                 break;
-                            case 'f':
+                            case 'b':
                                 System.out.println("**************Prefix Evaluation**************");
                                 System.out.println("----------------------------------------------");
                                 System.out.println("Enter the Prefix Expression you want to Convert : ");
@@ -126,13 +158,9 @@ class MainConvertor{
                                 System.out.println("================================================================");
                             
                         }
-                        //raj2.close();
-                        /*if(options!="g"){
-                            options = null;
-                        }*/
-                    }while(options!='g');
-                    break;
-                case 2:
+                    }while(options!='c');
+                break;
+                case 3:
                     Base_2_to_36 object = new Base_2_to_36();
                     int x,y;
                     String number;
@@ -148,7 +176,7 @@ class MainConvertor{
                     System.out.println();
                     //sourya.close();
                     break;
-                case 3:
+                case 4:
                     do{
                         Scanner tojo1 = new Scanner(System.in);
                         System.out.println("================================================================");

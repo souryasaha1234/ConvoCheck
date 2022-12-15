@@ -9,7 +9,7 @@ i.e from any base to any base.
 Suppose an user wants to convert a base 6 number to a base 10 number ... or any Binary number to it's equivalent Hexadecimal Form.
 
 This web app also convert some codes to it's any equivalent forms, such as follows : 
-      1) Gray Code
+      1) Gray Code 
       2) Binary Coded Decimals(BCD)
       3) Excess-3 Code
 
@@ -27,11 +27,12 @@ There are also some Conversions and evaluations based on expressions we use in o
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-Building Blocks of the App
+Building Blocks of the Website
 -----------------------------------------------------------------------------------------
 
-ConvoCheck is a JAVA based Web-App.
-Technologies and Languages Used in this Web-App
+ConvoCheck is a JAVA based Web-App for some conversions mentioned above.
+
+Technologies and Languages Used in this Website
 ----------------------------------------------------
       1) JAVA
       2) HTML
@@ -44,10 +45,11 @@ Technologies and Languages Used in this Web-App
 Java Code Structure :-
 =========================
 In a Convertor.java file we have created an Interface called ConvertorInterf in which we have all the required Conversions methods to be implemented. 
-For this we have used 3 .java files for the Logic Building purpose and implementing all the ConvertorInterf methods as follows :-
+For this we have used 4 .java files for the Logic Building purpose and implementing all the ConvertorInterf methods as follows :-
 1) Base_2_to_36.java
 2) binGrayBCDExcess3.java
 3) Infix_postfix_prefix_operations.java
+4) Evaluation.java
 ---------------------------------------------------------------------------------------------------------------
 Base_2_to_36.java
 ------------------------
@@ -69,8 +71,8 @@ binGrayBCDExcess3.java
 ---------------------------------------------------------------------------------------------------------------
 Infix_postfix_prefix_operations.java
 -------------------------------------
-      For this conversion and evaluations of Infix, Postfix and Prefix expressions we have created an Infix_postfix_prefix_operations.java file.
-      This file contains 4 classes for the conversion and evaluation of infix, postfix and prefix expressions.
+      For this conversion of Infix, Postfix and Prefix expressions we have created an Infix_postfix_prefix_operations.java file.
+      This file contains 3 classes for the conversion of infix, postfix and prefix expressions.
       Following is the description of each classes -->
 -----------------------------------------------------------------------------
 1) BasicMethods Class --> 
@@ -82,16 +84,26 @@ Infix_postfix_prefix_operations.java
 2) InfixPostfixPrefixConvertor Class -->
 -------------------------------------------
       This class is a infix, Postfix, Prefix Convertor class i.e. it converts an infix expression to it's equivalent Postfix or Prefix Expression as required By the User.
-      This class extends the Adapter Class to implement the ConvetorInterf Interface method. For More details visit the file.
+      This class extends the Adapter Class to implement the ConvetorInterf Interface method. For More details visit the file Infix_postfix_prefix_operations.java.
 
 3) ToInfix Class -->
 -----------------------
       This class converts Postfix and Prefix expressions to its equivalent Infix Expression. 
-      This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file.
+      This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file Infix_postfix_prefix_operations.java.
 
- 
-4) PostfixPrefixEvaluation Class -->
+Evaluation.java
+----------------
+      For evaluations of Postfix and Prefix expressions we have created an Evaluation.java file.
+      This file contains 2 classes for the  evaluation of  postfix and prefix expressions.
+      Following is the description of each classes -->
+-----------------------------------------------------------------------------
+1) BasicMethods_Evaluation Class --> 
+------------------------------
+      This class contains one basic method needed for the postfix and prefix evaluation i.e, isOperator() method. 
+      The functionalities of this method is fully explained in the Evaluation.java file.
+
+2) PostfixPrefixEvaluation Class -->
 ---------------------------------------
       This is class for evaluating the Postfix and Prefix Expressions entered by the users. 
-      This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file.
----------------------------------------------------------------------------------------------------------------------------------------
+      This class also extends the Adapter Class to implement the Convertor Interface. For more details visit the file Evaluation.java.
+      
