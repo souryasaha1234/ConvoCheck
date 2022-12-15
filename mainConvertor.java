@@ -41,7 +41,6 @@ class MainConvertor{
                         System.out.print("Enter which Infix Postfix Prefix Conversion Operation would you like to perform : ");
                         options = raj2.next().charAt(0);
                         String expression = "",output = "";
-                        int evaluation;
                         ToInfix toInfix = new ToInfix();
                         Scanner raj = new Scanner(System.in);
                         switch (options) {
@@ -118,7 +117,7 @@ class MainConvertor{
                         System.out.println("================================================================");
                         System.out.print("Enter which Infix Postfix Prefix Conversion Operation would you like to perform : ");
                         options = raj2.next().charAt(0);
-                        String expression = "",output = "";
+                        String expression = "";
                         int evaluation;
                         //ToInfix toInfix = new ToInfix();
                         Scanner raj = new Scanner(System.in);
