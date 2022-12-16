@@ -53,7 +53,7 @@ nav ul li a, .dropdown .dropbtn {
     overflow: hidden;
 }
 nav ul li a:hover, .dropdown:hover .dropbtn{
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: rgba(3, 32, 252, 0.4);
     border-radius: 30px;
 }
 #logo_navigation{
