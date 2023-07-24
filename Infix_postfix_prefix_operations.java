@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Stack;
 
 //Basic Methods Class
 class BasicMethods{
@@ -56,7 +56,6 @@ class BasicMethods{
         }
         return newExpression;//Returning the Reverse String
     }
-
     //To check the precedence of the operator
     public int precedence(char operator){
         /*This is a public method which returns the precedence of the operators in the given
@@ -101,7 +100,7 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         //It is a no-arg constructor which initializes the resultant output array to blank.
         outputArray = "";
     }
-    OperatorStack ops = new OperatorStack();//Creating an OperatorStack class object instance
+    Stack<Character> ops = new Stack<>();//Creating an OperatorStack class object instance
     
     BasicMethods bsm = new BasicMethods();//Creating a BasicMethods Class object instance
     
@@ -115,41 +114,42 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
         /*This for loop which iterates through the whole expression */
         for(i = 0; i<expression.length(); i++){
             //If the symbol is an operand
-            if(bsm.isOperand(expression.charAt(i)) == 1){
-                outputArray += expression.charAt(i);
+            char a = expression.charAt(i);
+            if(bsm.isOperand(a) == 1){
+                outputArray += a;
                 continue;
             }
             //If the symbol is an open parenthesis
-            if(expression.charAt(i) == '('){
-                ops.pushOperatorStack(expression.charAt(i));
+            if(a == '('){
+                ops.push(a);
                 continue;
             }
             //If the symbol is an operator
-            if(bsm.isOperator(expression.charAt(i)) == 1){
+            if(bsm.isOperator(a) == 1){
                 /*This while loop runs only when the precedence of the incoming symbol is lower
                  * than or equal to the precedence of the Symbol in the Stack top.
                  */
-                while(ops.top != -1 && bsm.precedence(expression.charAt(i)) <= bsm.precedence(ops.operatorStack[ops.top])){
+                while(!ops.empty() && bsm.precedence(a) <= bsm.precedence(ops.peek())){
                     /*If it is, then pop the Stack top element until the precedence of the symbol is
                      * higher than the precedence of the Stack top Symbol
                      */
-                    outputArray += ops.popOperatorStack();
+                    outputArray += ops.pop();
                 }
                 //Push the incoming Symbol into the Stack
-                ops.pushOperatorStack(expression.charAt(i));
+                ops.push(a);
                 continue;
             }
             //If the symbol is a left parenthesis
-            if(expression.charAt(i) == ')'){
-                while((next = ops.popOperatorStack()) != '('){
+            if(a == ')'){
+                while((next = ops.pop()) != '('){
                     outputArray += next;
                 }
                 continue;
             }
         }
         //Popping of the remaining elements from the Stack.
-        while(ops.top != -1){
-            outputArray += ops.popOperatorStack();
+        while(!ops.empty()){
+            outputArray += ops.pop();
         }
         //System.out.println("The equivalent postfix expression of the given infix expression is : ");
         //System.out.println(outputArray);//Printing of Result
@@ -171,15 +171,15 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
             //If the symbol of the expression is an operator
             if(bsm.isOperator(symbol) == 1){
                 //while Loop To pop all the operators of higher precedence if there is any.
-                while(ops.top != -1 && bsm.precedence(symbol) < bsm.precedence(ops.operatorStack[ops.top])){
-                    outputArray += ops.popOperatorStack();
+                while(!ops.empty() && bsm.precedence(symbol) < bsm.precedence(ops.peek())){
+                    outputArray += ops.pop();
                 }
                 //After the execution of this while push the Symbol into the operator Stack
-                ops.pushOperatorStack(symbol);
+                ops.push(symbol);
             }
             //If the Symbol of the expression is close parenthesis ")" then push it into the Stack
             else if(symbol == ')'){
-                ops.pushOperatorStack(symbol);
+                ops.push(symbol);
             }
             //If the symbol is an open parenthesis "(" then
             else if(symbol == '('){
@@ -187,7 +187,7 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
                 /*Pop the operator Stack until close parenthesis is being encountered
                  * and append the popped out operator to the output array.
                  */
-                while((next = ops.popOperatorStack()) != ')'){
+                while((next = ops.pop()) != ')'){
                     outputArray += next;
                 }
             }
@@ -197,8 +197,8 @@ class InfixPostfixPrefixConvertor extends AdapterClass{
             }
         }
         //Popping the remaining the remaining elements from the Stack
-        while(ops.top != -1){
-            outputArray += ops.popOperatorStack();
+        while(!ops.empty()){
+            outputArray += ops.pop();
         }
         //Printing the result
         /*System.out.println("The equivalent prefix expression of the given infix expression is : ");

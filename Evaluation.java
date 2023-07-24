@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Stack;
+import java.util.Scanner;
+
 //Basic Methods Class
 class BasicMethods_Evaluation{
     /*This class contains all the basic methods needed for the postfix and prefix evaluation.
@@ -35,7 +37,7 @@ class PostfixPrefixEvaluation extends AdapterClass{
      */
     int evaluation;
     //int[] values;
-    StackOperations s = new StackOperations();
+    Stack<Integer> stack = new Stack<>();
     Scanner sc = new Scanner(System.in);
     PostfixPrefixEvaluation(){
         /*A no arg Constructor to declare the value of evaluation to be 0 and declare the integer array values */
@@ -53,13 +55,13 @@ class PostfixPrefixEvaluation extends AdapterClass{
         for(i = 0; i<sa.length; i++){
             //Checking the Symbol of the expression is operand or not using isOperator().
             if(bsm.isOperator(sa[i]) != 1){
-                s.push(Integer.parseInt(sa[i]));
+                stack.push(Integer.parseInt(sa[i]));
             }
             //If the symbol is not an operand then it must be an operator
             else{
                 //Pop two times from the Stack
-                a = s.pop();
-                b = s.pop();
+                a = stack.pop();
+                b = stack.pop();
                 //Considering which operator it has encountered
                 switch(sa[i]){
                     //Perform the following required operations as the operator is encountered
@@ -80,10 +82,10 @@ class PostfixPrefixEvaluation extends AdapterClass{
                         temp = (int)Math.pow(b,a);
                         break;
                 }//end switch
-                s.push(temp);//Push the result back into the Stack
+                stack.push(temp);//Push the result back into the Stack
             }//end else
         }//end for
-    return s.pop();//Pop and return the Stack top to obtain the final result after evaluation
+    return stack.pop();//Pop and return the Stack top to obtain the final result after evaluation
     }
     //Method for the Prefix Expression Evaluation
     public int prefixEvaluation(String expression){
@@ -95,12 +97,12 @@ class PostfixPrefixEvaluation extends AdapterClass{
         for(i = sa.length-1; i>=0; i--){
             //Checking the Symbol of the expression is operand or not using isOperator().
             if(bsm.isOperator(sa[i]) != 1){
-                s.push(Integer.parseInt(sa[i]));
+                stack.push(Integer.parseInt(sa[i]));
             }
             else{
                 //Pop two times from the Stack
-                a = s.pop();
-                b = s.pop();
+                a = stack.pop();
+                b = stack.pop();
                 //Considering which operator it has encountered
                 switch(sa[i]){
                     //Perform the following required operations as the operator is encountered
@@ -121,9 +123,9 @@ class PostfixPrefixEvaluation extends AdapterClass{
                         temp = (int)Math.pow(a,b);
                         break;
                 }//end switch
-                s.push(temp);//Push the result back into the Stack
+                stack.push(temp);//Push the result back into the Stack
             }//end else
         }//end for
-        return s.pop();//Pop and return the Stack top to obtain the final result after evaluation
+        return stack.pop();//Pop and return the Stack top to obtain the final result after evaluation
     }
 }
