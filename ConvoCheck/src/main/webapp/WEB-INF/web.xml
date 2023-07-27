@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>ConvoCheck</display-name>
+  <welcome-file-list>
+  	<welcome-file>StartServlet</welcome-file>
+  	<welcome-file>homepage</welcome-file>
+    <!-- <welcome-file>index.html</welcome-file> -->
+  </welcome-file-list>
+  
+  <!-- Home Page Configuration -->
+  <servlet>
+  	<servlet-name>homePage</servlet-name>
+  	<jsp-file>/index.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>homePage</servlet-name>
+  	<url-pattern>/homepage</url-pattern>
+  </servlet-mapping>
+  
+  <!-- About Page Url Configuration -->
+  <servlet>
+  	<servlet-name>aboutPage</servlet-name>
+  	<jsp-file>/about.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>aboutPage</servlet-name>
+  	<url-pattern>/about</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Login Page Url Configuration -->
+  <servlet>
+  	<servlet-name>loginPage</servlet-name>
+  	<jsp-file>/login.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>loginPage</servlet-name>
+  	<url-pattern>/loginpage</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Base Conversion page URL configuration -->
+  <servlet>
+  	<servlet-name>baseConversion</servlet-name>
+  	<jsp-file>/baseConversion.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>baseConversion</servlet-name>
+  	<url-pattern>/baseConversion</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Code Conversion page URL configuration -->
+  <servlet>
+  	<servlet-name>codeConversion</servlet-name>
+  	<jsp-file>/codeConversion.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>codeConversion</servlet-name>
+  	<url-pattern>/codeConversion</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Equation Conversion page URL Configuration -->
+  <servlet>
+  	<servlet-name>equationConversion</servlet-name>
+  	<jsp-file>/equationConversion.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>equationConversion</servlet-name>
+  	<url-pattern>/equationConversion</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Evaluation Page URL Configuration -->
+  <servlet>
+  	<servlet-name>evaluation</servlet-name>
+  	<jsp-file>/evaluation.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>evaluation</servlet-name>
+  	<url-pattern>/evaluation</url-pattern>
+  </servlet-mapping>
+  
+  <!-- SignUpServlet URL Configuration -->
+  <servlet>
+  	<servlet-name>signup</servlet-name>
+  	<servlet-class>com.wipro.servlets.SignUpServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>signup</servlet-name>
+  	<url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Before Login Page URL Configuration -->
+  <servlet>
+  	<servlet-name>beforeLogin</servlet-name>
+  	<jsp-file>/beforeLogin.html</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>beforeLogin</servlet-name>
+  	<url-pattern>/beforelogin</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</web-app>
