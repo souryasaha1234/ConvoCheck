@@ -134,8 +134,13 @@
       </div>
       <div class="form-inner">
         <form action="login" class="login" method="post">
+        	<div class="field" style="margin: 0px; margin-bottom: -25px">
+        		<p style = "height: fit-content; text-align: center;">User Name or  password incorrect</p> 
+        	</div>
+        	<!-- 
+        	 <div>${messageSign }</div>
+        	 -->
         	<div class="field">
-        	<div>${messageSign }</div>
             	<input type="text" placeholder="User-name" name="username" required>
           	</div>
           <div class="field">
