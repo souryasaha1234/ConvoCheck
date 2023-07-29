@@ -9,7 +9,7 @@ public class ConnectionFactory {
 	
 	static {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/convocheck", "root", "root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/convocheck", "root", "tojosoumili12");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
