@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConvoCheck | Home</title>
+    <title>ConvoCheck | SignUp</title>
     <!-- CSS only -->
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -55,6 +55,12 @@
 			  margin-right: 160px;
 			  background: transparent;
 			  border-radius: 15px;
+    	}
+    	#togglePassword{
+    		position: absolute;
+    		margin-top: 10px;
+    		margin-left: -35px;
+    		cursor: pointer;
     	}
     </style>
 </head>
@@ -146,7 +152,10 @@
             <input type="text" placeholder="Email Address" name="email" value="${email }" required>
           </div>
           <div class="field">
-            <input type="password" placeholder="Password" name="password" value="${password }" required>
+	          <p style = "height: inherit;">
+	            <input type="password" placeholder="Password" name="password" value="${password }" id="password" required>
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
+	          </p>
           </div>
           <div class="field">
             <input type="password" placeholder="Confirm password" name="cnfpass" required>
@@ -159,6 +168,38 @@
       </div>
     </div>
 </div>
+<script>
+      const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#password');
+      togglePassword.addEventListener('click', function (e) {
+    	    // toggle the type attribute
+    	    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    	    password.setAttribute('type', type);
+    	    // toggle the eye / eye slash icon
+    	    this.classList.toggle('bi-eye');
+    	});
+</script>
 
+<!-- footer elements -->
+<footer>
+    <!-- logo in the place of # -->
+    <a href="homepage"><img src="./img/LOGO_black_based.png" id="logo_footer" height="100px"></a>
+    <h1>
+      <a href="#facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#twitter"><i class="bi bi-twitter"></i></a>
+      <a href="#linkedin"><i class="bi bi-linkedin"></i></a>
+      <a href="#google"><i class="bi bi-google"></i></a>
+      <a href="#github"><i class="bi bi-github"></i></a>
+  </h1>
+  <p>Copyright &copy 2022 ConvoCheck India</p>
+    <p>All rights are reserved</p>
+    <p>Developed & Maintained by-</p>
+    <a href="https://github.com/SumonaDutta23" target="_blank">@Sumona Dutta</a>
+    <a href="https://github.com/souryasaha1234" target="_blank">@Sourya Saha</a>
+    <a href="https://github.com/SouvikRay96" target="_blank">@Souvik Ray</a>
+    <a href="https://github.com/Rajdeep-1508" target="_blank">@Rajdeep Maulik</a>
+    <br>
+</footer>
 </body>
 </html>

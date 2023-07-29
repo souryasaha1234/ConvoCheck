@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConvoCheck | Home</title>
+    <title>ConvoCheck | Login</title>
     <!-- CSS only -->
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -54,6 +54,12 @@
 			  margin-left: 160px;
 			  background: transparent;
 			  border-radius: 15px;
+    	}
+    	#togglePassword{
+    		position: absolute;
+    		margin-top: 10px;
+    		margin-left: -35px;
+    		cursor: pointer;
     	}
     </style>
 </head>
@@ -127,10 +133,6 @@
       <div class="slide-controls">
         <a href="loginpage" class="loginclass"><button type="button" name="slide" id="login">Login</button></a>
         <a href="signuppage" class="signupclass"><button type="button" name="slide" id="signup">Signup</button></a>
-        <!-- <input type="radio" name="slide" id="signup">
-        <label for="login" class="slide login">Login</label>
-        <label for="signup" class="slide signup">Signup</label>
-        <div class="slider-tab"></div> -->
       </div>
       <div class="form-inner">
         <form action="login" class="login" method="post">
@@ -147,59 +149,33 @@
             <input type="email" placeholder="Email Address" name="email" required>
           </div>
           <div class="field">
-          <p style = "height: inherit;">
-            <input type="password" placeholder="Password" name="password" required id="password">
-          </p>
+          <div class="field">
+	          <p style = "height: inherit;">
+	            <input type="password" placeholder="Password" name="password" id="password" required>
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
+	          </p>
+          </div>
           </div>
           <div class="pass-link"><a href="#">Forgot password?</a></div>
           <div class="field btn">
             <div class="btn-layer"></div>
             <input type="submit" value="Login">
           </div>
-          <div class="signup-link">Not a member? <a href="">Signup now</a></div>
-        </form>
-        <form action="signup" class="signup" method="post">
-          <div>${messageSign }</div>
-        	<div class="field">
-            	<input type="text" placeholder="User-name" name="username" value="${username }" required>
-          	</div>
-          <div class="field">
-            <input type="text" placeholder="Email Address" name="email" value="${email }" required>
-          </div>
-          <div class="field">
-            <input type="password" placeholder="Password" name="password" value="${password }" required>
-          </div>
-          <div class="field">
-            <input type="password" placeholder="Confirm password" name="cnfpass" required>
-          </div>
-          <div class="field btn">
-            <div class="btn-layer"></div>
-            <input type="submit" value="Signup">
-          </div>
+          <div class="signup-link">Not a member? <a href="signuppage">Signup now</a></div>
         </form>
       </div>
     </div>
 </div>
 <script>
-     const loginText = document.querySelector(".title-text .login");
-      const loginForm = document.querySelector("form.login");
-      const loginBtn = document.querySelector("label.login");
-      const signupBtn = document.querySelector("label.signup");
-      const signupLink = document.querySelector("form .signup-link a");
-      signupBtn.onclick = (()=>{
-        loginForm.style.marginLeft = "-50%";
-        loginText.style.marginLeft = "-50%";
-        document.
-      });
-      loginBtn.onclick = (()=>{
-        loginForm.style.marginLeft = "0%";
-        loginText.style.marginLeft = "0%";
-      });
-      signupLink.onclick = (()=>{
-        signupBtn.click();
-        
-        return false;
-      });
+      const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#password');
+      togglePassword.addEventListener('click', function (e) {
+    	    // toggle the type attribute
+    	    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    	    password.setAttribute('type', type);
+    	    // toggle the eye / eye slash icon
+    	    this.classList.toggle('bi-eye');
+    	});
 </script>
 
 <!-- footer elements -->
