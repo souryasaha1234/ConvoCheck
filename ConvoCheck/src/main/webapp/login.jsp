@@ -94,10 +94,12 @@
             	<input type="text" placeholder="User-name" name="username" required>
           	</div>
           <div class="field">
-            <input type="text" placeholder="Email Address" name="email" required>
+            <input type="email" placeholder="Email Address" name="email" required>
           </div>
           <div class="field">
-            <input type="password" placeholder="Password" name="password" required>
+          <p style = "height: inherit;">
+            <input type="password" placeholder="Password" name="password" required id="password">
+          </p>
           </div>
           <div class="pass-link"><a href="#">Forgot password?</a></div>
           <div class="field btn">
@@ -137,6 +139,7 @@
       signupBtn.onclick = (()=>{
         loginForm.style.marginLeft = "-50%";
         loginText.style.marginLeft = "-50%";
+        document.
       });
       loginBtn.onclick = (()=>{
         loginForm.style.marginLeft = "0%";
@@ -144,9 +147,9 @@
       });
       signupLink.onclick = (()=>{
         signupBtn.click();
+        
         return false;
       });
-
 </script>
 
 <!-- footer elements -->

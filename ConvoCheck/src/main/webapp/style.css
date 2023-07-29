@@ -498,6 +498,7 @@ input[type="radio"] {
 .wrapper .form-container {
   width: 100%;
   overflow: hidden;
+  height: fit-content;
 }
 .form-container .form-inner {
   display: flex;
