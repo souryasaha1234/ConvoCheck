@@ -13,16 +13,14 @@
     <link rel="icon" type="image/jpg" href="img/head_logo (2).png">
     <link rel="stylesheet" href="style.css">
     <style>
-    	.loginclass{
+    	.signupclass{
     		  position: absolute;
 			  height: 100%;
 			  width: 50%;
-			  left: 0;
-			  z-index: 0;
 			  border-radius: 15px;
 			  background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
     	}
-    	#login{
+    	#signup{
     		  height: 100%;
 			  width: 100%;
 			  color: #fff;
@@ -31,20 +29,22 @@
 			  text-align: center;
 			  line-height: 48px;
 			  cursor: pointer;
-			  z-index: 1;
 			  background: transparent;
 			  border-radius: 15px;
     	}
-    	.signupclass{
+    	.loginclass{
     		  position: relative;
 			  height: 100%;
 			  width: 50%;
 			  border-radius: 15px;
+			  left: 0;
+			  z-index: 0;
 			  /*background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);*/
     	}
-    	#signup{
+    	#login{
     		  height: 100%;
 			  width: 100%;
+			  z-index: 1;
 			  color: black;
 			  font-size: 18px;
 			  font-weight: 500;
@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <!-- header -->
+	<!-- header -->
     <header>
         <a href="homepage"><img src="./img/Convo_Check_header_animation.gif" alt="ConvoCheck" height="150px"></a>
         <h2>-:A all purpose convertor for you:-</h2>
@@ -117,42 +117,20 @@
         </ul>
     </nav>
     
-<!-- main elements -->
-<div class="wrapper">
+	<!-- Main Elements -->
+	<div class="wrapper">
     <div class="title-text">
-      <div class="title login">Login Here</div>
       
+      <div class="title signup">Signup Now !</div>
     </div>
     <div class="form-container">
       <div class="slide-controls">
-        <a href="loginpage" class="loginclass"><button type="button" name="slide" id="login">Login</button></a>
         <a href="signuppage" class="signupclass"><button type="button" name="slide" id="signup">Signup</button></a>
-        <!-- <input type="radio" name="slide" id="signup">
-        <label for="login" class="slide login">Login</label>
-        <label for="signup" class="slide signup">Signup</label>
-        <div class="slider-tab"></div> -->
+      	<a href="loginpage" class="loginclass"><button type="button" name="slide" id="login">Login</button></a>
+        
       </div>
       <div class="form-inner">
-        <form action="login" class="login" method="post">
-        	<div class="field">
-        	<div>${messageSign }</div>
-            	<input type="text" placeholder="User-name" name="username" required>
-          	</div>
-          <div class="field">
-            <input type="email" placeholder="Email Address" name="email" required>
-          </div>
-          <div class="field">
-          <p style = "height: inherit;">
-            <input type="password" placeholder="Password" name="password" required id="password">
-          </p>
-          </div>
-          <div class="pass-link"><a href="#">Forgot password?</a></div>
-          <div class="field btn">
-            <div class="btn-layer"></div>
-            <input type="submit" value="Login">
-          </div>
-          <div class="signup-link">Not a member? <a href="">Signup now</a></div>
-        </form>
+        
         <form action="signup" class="signup" method="post">
           <div>${messageSign }</div>
         	<div class="field">
@@ -175,48 +153,6 @@
       </div>
     </div>
 </div>
-<script>
-     const loginText = document.querySelector(".title-text .login");
-      const loginForm = document.querySelector("form.login");
-      const loginBtn = document.querySelector("label.login");
-      const signupBtn = document.querySelector("label.signup");
-      const signupLink = document.querySelector("form .signup-link a");
-      signupBtn.onclick = (()=>{
-        loginForm.style.marginLeft = "-50%";
-        loginText.style.marginLeft = "-50%";
-        document.
-      });
-      loginBtn.onclick = (()=>{
-        loginForm.style.marginLeft = "0%";
-        loginText.style.marginLeft = "0%";
-      });
-      signupLink.onclick = (()=>{
-        signupBtn.click();
-        
-        return false;
-      });
-</script>
 
-<!-- footer elements -->
-<footer>
-    <!-- logo in the place of # -->
-    <a href="homepage"><img src="./img/LOGO_black_based.png" id="logo_footer" height="100px"></a>
-    <h1>
-      <a href="#facebook"><i class="bi bi-facebook"></i></a>
-      <a href="#instagram"><i class="bi bi-instagram"></i></a>
-      <a href="#twitter"><i class="bi bi-twitter"></i></a>
-      <a href="#linkedin"><i class="bi bi-linkedin"></i></a>
-      <a href="#google"><i class="bi bi-google"></i></a>
-      <a href="#github"><i class="bi bi-github"></i></a>
-  </h1>
-  <p>Copyright &copy 2022 ConvoCheck India</p>
-    <p>All rights are reserved</p>
-    <p>Developed & Maintained by-</p>
-    <a href="https://github.com/SumonaDutta23" target="_blank">@Sumona Dutta</a>
-    <a href="https://github.com/souryasaha1234" target="_blank">@Sourya Saha</a>
-    <a href="https://github.com/SouvikRay96" target="_blank">@Souvik Ray</a>
-    <a href="https://github.com/Rajdeep-1508" target="_blank">@Rajdeep Maulik</a>
-    <br>
-</footer>
 </body>
 </html>

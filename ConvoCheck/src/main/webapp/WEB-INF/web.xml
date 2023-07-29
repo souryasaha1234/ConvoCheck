@@ -106,7 +106,16 @@
   	<url-pattern>/beforelogin</url-pattern>
   </servlet-mapping>
   
+  <!-- Sign-up Page URL Configuration -->
+  <servlet>
+  	<servlet-name>signupPage</servlet-name>
+  	<jsp-file>/signup.jsp</jsp-file>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>signupPage</servlet-name>
+  	<url-pattern>/signuppage</url-pattern>
+  </servlet-mapping>
   
   
   
