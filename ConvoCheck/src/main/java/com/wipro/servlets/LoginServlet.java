@@ -46,15 +46,30 @@ public class LoginServlet extends HttpServlet {
 		AccountsService accService = AccountsServiceFactory.getAccountsServiceObject();
 		
 		String status = accService.loginUserService(acc);
+		String welcomeMessage = null;
+		
 		
 		if(status.equalsIgnoreCase("success")) {
 			//System.out.println("Account details inserted Successfully");
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-			response.sendRedirect("homepage");
+			welcomeMessage = "<script>\r\n"
+					+ "            swal({\r\n"
+					+ "                title: \"Welcome "+username+"\",\r\n"
+					+ "                text: \"You'r successfully Logged in to your account\",\r\n"
+					+ "                icon: \"success\",\r\n"
+					+ "                button: \"OK\",\r\n"
+					+ "              });\r\n"
+					+ "        </script>";
+			
+			request.setAttribute("welcomeMessage", welcomeMessage);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("homepage");
+			rd.forward(request, response);
+			//response.sendRedirect("homepage");
 		}
 		else if(status.equalsIgnoreCase("failure")) {
-			String message = "Please enter correct user credentials";
+			String message = "Username or Password is Incorrect";
 			request.setAttribute("message", message);
 			RequestDispatcher rd = request.getRequestDispatcher("loginpage");
 			rd.forward(request, response);

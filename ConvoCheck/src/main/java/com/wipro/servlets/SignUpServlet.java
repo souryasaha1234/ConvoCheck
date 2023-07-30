@@ -69,7 +69,14 @@ public class SignUpServlet extends HttpServlet {
 			}
 			else {
 				System.out.println("Account details not inserted Successfully");
-				response.sendRedirect("loginpage");
+				messageSign = "Duplicate Email Address";
+				request.setAttribute("messageSign", messageSign);
+				request.setAttribute("username", username);
+				request.setAttribute("email", email);
+				request.setAttribute("password", password);
+				RequestDispatcher rd = request.getRequestDispatcher("signuppage");
+				rd.forward(request, response);
+				//response.sendRedirect("signuppage");
 			}
 			
 		}
@@ -79,7 +86,7 @@ public class SignUpServlet extends HttpServlet {
 			request.setAttribute("username", username);
 			request.setAttribute("email", email);
 			request.setAttribute("password", password);
-			RequestDispatcher rd = request.getRequestDispatcher("loginpage");
+			RequestDispatcher rd = request.getRequestDispatcher("signuppage");
 			rd.forward(request, response);
 		}
 		

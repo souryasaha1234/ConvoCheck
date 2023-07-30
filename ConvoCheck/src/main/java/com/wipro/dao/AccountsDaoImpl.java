@@ -103,7 +103,7 @@ public class AccountsDaoImpl implements AccountsDao {
 			
 			//select username,email_address from accounts where username='Rajdeep' and password='123';
 			//Creating the Query
-			String query = "SELECT USERNAME,EMAIL_ADDRESS FROM ACCOUNTS WHERE EMAIL_ADDRESS='"+email+"' AND PASSWORD='"+password+"'";
+			String query = "SELECT USERNAME,PASSWORD FROM ACCOUNTS WHERE EMAIL_ADDRESS='"+email+"'";
 			
 			//Executing the Query
 			if(st != null)
@@ -111,7 +111,7 @@ public class AccountsDaoImpl implements AccountsDao {
 			
 			//Validating User Credentials
 			if(rst.next()) {
-				if(username.equals(rst.getString(1)) && email.equals(rst.getString(2))) {
+				if(username.equals(rst.getString(1)) && password.equals(rst.getString(2))) {
 					status = "success";
 				}
 				else

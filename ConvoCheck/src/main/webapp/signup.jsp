@@ -140,7 +140,7 @@
         
         <form action="signup" class="signup" method="post">
           <div class="field" style="margin: 0px; margin-bottom: -25px">
-        		<p style = "height: fit-content; text-align: center;">User Name or  password incorrect</p> 
+        		<p style = "height: fit-content; text-align: center; color: red">${messageSign }</p> 
         	</div>
         <!-- 
           <div>${messageSign }</div>

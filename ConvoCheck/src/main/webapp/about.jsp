@@ -38,7 +38,7 @@
                 		String log = "";
             			String facility = "";
                 		if(session.getAttribute("username") != null){
-                			log = "<a href='logout'><i class='bi bi-person-fill'></i><b>Log-Out</b></a>";
+                			log = "<a href='logout' style='color: white; background-color: red; border-radius: 30px;'><i class='bi bi-person-fill'></i><b>Log-Out</b></a>";
                 			facility = "<a href='equationConversion'>Equation Conversion</a>"
                                     +"<a href='baseConversion'>Base Conversion</a>"
                                     +"<a href='codeConversion'>Code Conversion</a>"

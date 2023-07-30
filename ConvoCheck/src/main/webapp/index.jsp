@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +12,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
         <link rel="icon" type="image/jpg" href="img/head_logo (2).png">
         <link rel="stylesheet" href="style.css">
+        
     </head>
     <body>
     
@@ -23,6 +25,7 @@
 	    	String log = null,facilities = null,slideConvert123 = null,slideEvaluate23 = null;
 			String slide4 = null,slideConvert567 = null;
 			String card1 = null,card2 = null,card3 = null,card4 = null;
+			String welcome = "";
 			//If user is not Logged-In
     		if(session.getAttribute("username") == null){
     			//response.sendRedirect("beforelogin");
@@ -42,7 +45,7 @@
     			
     		}
     		else{
-    			log = "<a href='logout'><i class='bi bi-person-fill'></i> <b>Log-Out</b></a>";
+    			log = "<a href='logout' style='color: white; background-color: red; border-radius: 30px;'><i class='bi bi-person-fill'></i> <b>Log-Out</b></a>";
     			facilities = "<a href='equationConversion'>Equation Conversion</a>"
                         +"<a href='baseConversion'>Base Conversion</a>"
                         +"<a href='codeConversion'>Code Conversion</a>"
@@ -55,12 +58,15 @@
 				card2 = "<a href='baseConversion'><b>Proceed </b>"+"<i class='bi bi-arrow-right-circle-fill'></i></a>";;
 				card3 = "<a href='codeConversion'><b>Proceed </b>"+"<i class='bi bi-arrow-right-circle-fill'></i></a>";;
 				card4 = "<a href='evaluation'><b>Proceed </b>"+"<i class='bi bi-arrow-right-circle-fill'></i></a>";;
-    			
+    			welcome = "<p class='welcome-message'>Welcome "+session.getAttribute("username")+" !</p>";
     		}
     	%>
         <!-- header -->
         <header>
-            <p class="welcome-message">Welcome ${username } !</p>
+        
+            <%=welcome %>
+        
+         
             <a href="homepage"><img src="./img/Convo_Check_header_animation.gif" alt="ConvoCheck" height="150px"></a>
             <h2>-:A all purpose convertor for you:-</h2>
         </header>

@@ -45,7 +45,9 @@ public class ToInfix extends AdapterClass {
         //Displaying the result
         /*System.out.println("The Infix equivalent of the given postfix expression is : ");
         System.out.println(infix.peek());*/
-        return infix.peek();
+        String output = infix.peek();
+        output = output.substring(1,output.length()-1);
+        return output;
     }
 
     //Public method of prefixToInfix of void return type
@@ -76,7 +78,9 @@ public class ToInfix extends AdapterClass {
         //Displaying the result
         /*System.out.println("The Infix equivalent of the given prefix expression is : ");
         System.out.println(infix.peek());*/
-        return infix.peek();
+        String output = infix.peek();
+        output = output.substring(1,output.length()-1);
+        return output;
     }
 
 }

@@ -52,7 +52,7 @@
                 	<%
                 		String log = "";
                 		if(session.getAttribute("username") != null)
-                			log = "<a href='logout'><i class='bi bi-person-fill'></i> <b>Log-Out</b></a>";
+                			log = "<a href='logout' style='color: white; background-color: red; border-radius: 30px'><i class='bi bi-person-fill'></i> <b>Log-Out</b></a>";
                 		else{
                 			log = "<a href='loginpage'><i class='bi bi-person-fill'></i> <b>Log-In</b></a>";
                 			response.sendRedirect("homepage");
