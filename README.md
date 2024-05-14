@@ -105,7 +105,7 @@ ConvoCheck is a JAVA based Web-App for some day-to-day conversions mentioned abo
       1) Clone the application from the Git Repository.
       2) Ensure these following softwares are installed prior running :
             a) Eclipse IDE
-            b) Tomcat Server Version 9.0
+            b) Tomcat Server version 9.0
             c) MySQL
             d) Java 8 or higher
       3) Open the Project in the Eclipse IDE.
